@@ -1,0 +1,19 @@
+1) select country.name, avg(country.population) city_avg, 
+sum(city.Population) as capital_city
+from country 
+JOIN city using(countrycode)
+where city.Population > (select avg(country.population) from country where city.countrycode = country.countrycode)
+group by country.Name
+﻿﻿
+
+2) select cl.language
+from countrylanguage cl
+join city using (countrycode)
+join country using (name)
+where cl.IsOfficial = 'T' and cl.IsOfficial > 3
+group by cl.Language
+
+4) select continent
+from country
+order by country.Population desc
+﻿
